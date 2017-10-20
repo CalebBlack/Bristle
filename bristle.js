@@ -103,6 +103,7 @@ class Bristle {
       }
     } else {
       throw this.error('Invalid Parent to Append To!');
+    }
     this.parent.appendChild(this.element);
     if (rerender === true) {
       this.render();
@@ -111,7 +112,7 @@ class Bristle {
       if (element instanceof Bristle) {
         element.parentAppended();
       }
-    })
+    });
   }
   parentAppended(){
     this.parent.appendChild(this.element);
