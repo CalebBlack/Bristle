@@ -68,8 +68,7 @@ class Bristle {
           output.push(element);
         }
 
-        }
-      });
+        });
       if (output.length > 0) {
         this.element.textContent = output.join('');
       }
