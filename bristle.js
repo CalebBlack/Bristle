@@ -4,6 +4,7 @@ class Bristle {
     this.value = null;
     this.render = this.render.bind(this);
     this.appendTo = this.appendTo.bind(this);
+    this.remove.bind(this);
     if (typeof elementType !=='string' || elementType.length <= 0){
       throw this.error('Invalid Element Type!');
     }
@@ -37,7 +38,9 @@ class Bristle {
     }
   }
   remove(){
-
+    if (this.hasOwnProperty('parent')) {
+      this.parent.removeChild(this.element);
+    }
   }
   error(message){
     return new Error('BRISTLE ERROR: '+message);
