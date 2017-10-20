@@ -90,6 +90,8 @@ class Bristle {
     this.children.forEach(child=>{
       if (child instanceof Bristle) {
         child.parentRendered();
+      } else if (child instanceof HTMLElement) {
+        this.element.appendChild(child);
       }
     });
   }
