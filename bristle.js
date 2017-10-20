@@ -1,4 +1,5 @@
 const validRenderPrimitives = ['string','boolean','number'];
+const renameAttributes = {typeattribute:'type'};
 class Bristle {
   constructor(elementType,render,parent){
     this.value = null;
@@ -40,7 +41,11 @@ class Bristle {
   }
   setAttributes(options){
     Object.entries(options).forEach(optionPair=>{
-      this.element.setAttribute(optionPair[0],optionPair[1]);
+      if (renameAttributes.hasOwnProperty(optionPair[0].toLowerCase())) {
+        this.element.setAttribute(renameAttributes[optionPair[0.toLowerCase()]],optionPair[1]);
+      } else {
+        this.element.setAttribute(optionPair[0],optionPair[1]);
+      }
     });
   }
   render(value){
