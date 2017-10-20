@@ -26,6 +26,8 @@ Allows you to modify the attributes of the bristle's DOM element, accepts an obj
 
 ```bristle.setAttributes({style:"color:red;"})```
 
+WARNING: You will be vulnerable to script injections if you setAttributes with data from unsafe/unsanitized sources.
+
 ## Example Calculator
 ```
 var calc = new Bristle({type:'div',id:'calculator'},'Calculator');
