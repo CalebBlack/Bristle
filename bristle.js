@@ -62,6 +62,7 @@ class Bristle {
       var output = [];
       out.forEach(element=>{
         if (element instanceof HTMLElement){
+          this.children.push(element);
           this.element.appendChild(HTMLElement);
         } else if (validRenderPrimitives.includes(typeof element)){
           output.push(element);
