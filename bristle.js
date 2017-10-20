@@ -2,6 +2,7 @@ const validRenderPrimitives = ['string','boolean','number'];
 const renameAttributes = {typeattribute:'type'};
 class Bristle {
   constructor(elementType,render,parent){
+    this.addClass = this.addClass.bind(this);
     this.onEvent = this.onEvent.bind(this);
     this.parentRendered = this.parentRendered.bind(this);
     this.parentAppended = this.parentAppended.bind(this);
@@ -39,6 +40,10 @@ class Bristle {
       }
       this.element = document.createElement(value.type);
       var options = Object.assign({},value);
+      if (options.hasOwnProperty('class')){
+        this.addClass(options.class);
+      }
+      delete options.class;
       delete options.type;
       this.setAttributes(options);
     }
@@ -46,6 +51,12 @@ class Bristle {
 
   parentRendered(){
     this.render();
+  }
+  addClass(string){
+    if (typeof string !== 'string' || string.length <= 0) {
+      throw this.error('Invalid Class Name!');
+    }
+    this.element.classList.add(string);
   }
   setAttributes(options){
     Object.entries(options).forEach(optionPair=>{
