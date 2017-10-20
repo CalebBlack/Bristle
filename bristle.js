@@ -41,6 +41,11 @@ class Bristle {
       this.setAttributes(options);
     }
   }
+
+  parentRendered(){
+    console.log('parent rerendered');
+    this.render();
+  }
   setAttributes(options){
     Object.entries(options).forEach(optionPair=>{
       if (renameAttributes.hasOwnProperty(optionPair[0].toLowerCase())) {
@@ -50,10 +55,8 @@ class Bristle {
       }
     });
   }
-  parentRendered(){
-    this.render();
-  }
   render(value){
+    console.log(this,{value});
     if (Array.isArray(value)) {
       var output = [];
       value.forEach(element=>{
@@ -69,7 +72,7 @@ class Bristle {
         }
       });
       if (output.length > 0) {
-        this.element.innerHTML = output.join('');
+        this.element.textContent = output.join('');
       }
     } else if (value instanceof Bristle){
       this.element.appendChild(value.element);
@@ -78,18 +81,22 @@ class Bristle {
     } else if (value instanceof HTMLElement){
       this.element.appendChild(element.cloneNode(true));
     } else {
-      if (value !== null && value !== undefined) {
+
+      if (value !== null && value !== undefined && validRenderPrimitives.includes(typeof value)) {
         this.value = value;
       }
       if (this.hasOwnProperty('parent') && validRenderPrimitives.includes(typeof this.value)){
-        this.element.innerHTML = this.value;
+        console.log('setting',this.value);
+        console.log('inner',this.element.textContent);
+        this.element.textContent = this.value;
       }
     }
     this.children.forEach(child=>{
       if (child instanceof Bristle) {
+        console.log('found child',{child});
         child.parentRendered();
       }
-    })
+    });
   }
   appendTo(element,rerender=true){
     if (element instanceof HTMLElement) {
