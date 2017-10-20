@@ -3,6 +3,7 @@ const renameAttributes = {typeattribute:'type'};
 class Bristle {
   constructor(elementType,render,parent){
     this.parentRendered = this.parentRendered.bind(this);
+    this.parentAppended = this.parentAppended.bind(this);
     this.children = [];
     this.value = null;
     this.render = this.render.bind(this);
@@ -56,10 +57,9 @@ class Bristle {
     });
   }
   render(value){
-    console.log(this,{value});
-    if (Array.isArray(value)) {
+    if (Array.isArray(value || this.value)) {
       var output = [];
-      value.forEach(element=>{
+      out.forEach(element=>{
         switch(element) {
           case element instanceof HTMLElement:
             this.element.appendChild(element.cloneNode(true));
@@ -81,7 +81,6 @@ class Bristle {
     } else if (value instanceof HTMLElement){
       this.element.appendChild(element.cloneNode(true));
     } else {
-
       if (value !== null && value !== undefined && validRenderPrimitives.includes(typeof value)) {
         this.value = value;
       }
@@ -114,6 +113,15 @@ class Bristle {
     if (rerender === true) {
       this.render();
     }
+    this.children.forEach(element=>{
+      if (element instanceof Bristle) {
+        element.parentAppended();
+      }
+    })
+  }
+  parentAppended(){
+    console.log('parent appended');
+    this.parent.appendChild(this.element);
   }
   remove(){
     if (this.hasOwnProperty('parent')) {
