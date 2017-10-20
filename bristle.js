@@ -57,7 +57,8 @@ class Bristle {
     });
   }
   render(value){
-    if (Array.isArray(value || this.value)) {
+    var out = value || this.value
+    if (Array.isArray(out)) {
       var output = [];
       out.forEach(element=>{
         switch(element) {
