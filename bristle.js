@@ -42,7 +42,7 @@ class Bristle {
   setAttributes(options){
     Object.entries(options).forEach(optionPair=>{
       if (renameAttributes.hasOwnProperty(optionPair[0].toLowerCase())) {
-        this.element.setAttribute(renameAttributes[optionPair[0.toLowerCase()]],optionPair[1]);
+        this.element.setAttribute(renameAttributes[optionPair[0].toLowerCase()],optionPair[1]);
       } else {
         this.element.setAttribute(optionPair[0],optionPair[1]);
       }
