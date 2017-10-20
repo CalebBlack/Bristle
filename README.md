@@ -7,7 +7,7 @@ Bristles represent DOM elements, and can chained together. Bristles are re-rende
 ## Bristle Methods
 
 #### render
-Allows you to set the value of a bristle, accepts string, boolean, number. Additionally a bristle or DOM element can be passed, which will just append it as a child.
+Allows you to set the value of a bristle, accepts string, boolean, number. Additionally a DOM element can be passed, which will just append it as a child.
 
 ```bristle.render('Hello World')```
 

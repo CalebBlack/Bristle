@@ -61,15 +61,12 @@ class Bristle {
     if (Array.isArray(out)) {
       var output = [];
       out.forEach(element=>{
-        switch(element) {
-          case element instanceof HTMLElement:
-            this.element.appendChild(element.cloneNode(true));
-          case element instanceof Bristle:
-            this.element.appendChild(element.element);
-            element.parent = this.element;
-            this.addChild(element);
-          case validRenderPrimitives.includes(typeof element):
-            output.push(element);
+        if (element instanceof HTMLElement){
+          this.element.appendChild(HTMLElement);
+        } else if (validRenderPrimitives.includes(typeof element)){
+          output.push(element);
+        }
+
         }
       });
       if (output.length > 0) {
