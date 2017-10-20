@@ -11,6 +11,11 @@ Allows you to set the value of a bristle, accepts string, boolean, number. Addit
 
 ```bristle.render('Hello World')```
 
+#### remove
+Removes the bristle from it's parent element.
+
+```bristle.remove()```
+
 #### appendTo
 Allows you to append a bristle to another Bristle or HTMLElement object
 
