@@ -4,6 +4,7 @@ const renameAttributes = {
 };
 class Bristle {
   constructor(elementType, render, parent) {
+    this.classes = [];
     this.addClass = this.addClass.bind(this);
     this.onEvent = this.onEvent.bind(this);
     this.parentRendered = this.parentRendered.bind(this);
