@@ -96,6 +96,9 @@ class Bristle {
       this.parent = element;
     } else if (element instanceof Bristle) {
       this.parent = element.element;
+      if (!this.parent.children.includes(this)){
+        this.parent.children.push(this);
+      }
     } else {
       throw this.error('Invalid Parent to Append To!');
     }
