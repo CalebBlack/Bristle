@@ -2,6 +2,7 @@ const validRenderPrimitives = ['string','boolean','number'];
 const renameAttributes = {typeattribute:'type'};
 class Bristle {
   constructor(elementType,render,parent){
+    this.children = [];
     this.value = null;
     this.render = this.render.bind(this);
     this.appendTo = this.appendTo.bind(this);
