@@ -5,10 +5,11 @@ class Bristle {
     this.render = this.render.bind(this);
     this.appendTo = this.appendTo.bind(this);
     this.remove.bind(this);
-    if (typeof elementType !=='string' || elementType.length <= 0){
+    this.setAttributes = this.setAttributes.bind(this);
+    if (typeof elementType !== 'string' && typeof elementType !=='object'){
       throw this.error('Invalid Element Type!');
     }
-    this.element = document.createElement(elementType);
+    this.element = this.initialize(elementType);
     if (parent){
       this.appendTo(parent,false);
     }
@@ -20,6 +21,27 @@ class Bristle {
     } else {
       throw this.error('Invalid Render Value.');
     }
+  }
+  initialize(value){
+    if (typeof value === 'string') {
+      if (value.length <= 0) {
+        throw this.error('Element Type too short!');
+      }
+      return document.createElement(value);
+    } else if (typeof value === 'object') {
+      if (!value.hasOwnProperty('type') || typeof value.type !=='string' || value.type.length <= 0) {
+        throw this.error('Element Object missing/invalid type key');
+      }
+      var element = document.createElement(value.type);
+      var options = Object.assign({},value);
+      delete options.type;
+      this.setAttributes(options);
+    }
+  }
+  setAttributes(options){
+    Object.entries(options).forEach(optionPair=>{
+      this.element.setAttribute(optionPair[0],optionPair[1]);
+    });
   }
   render(value){
     if (value instanceof Bristle){
