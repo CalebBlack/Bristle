@@ -116,7 +116,7 @@ class Bristle {
     });
   }
   onEvent(eventName,functionIn){
-    if (typeof eventName !== 'string' || eventName.length >= 0) {
+    if (typeof eventName !== 'string' || eventName.length <= 0) {
       throw this.error('Invalid Event name!');
     }
     if (typeof functionIn !=='function') {
