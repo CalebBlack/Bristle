@@ -43,7 +43,4 @@ class Bristle {
     return new Error('BRISTLE ERROR: '+message);
   }
 }
-rawUpdate(bristle,value){
-
-}
 module.exports = Bristle;
