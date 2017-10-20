@@ -9,7 +9,7 @@ class Bristle {
     if (typeof elementType !== 'string' && typeof elementType !=='object'){
       throw this.error('Invalid Element Type!');
     }
-    this.element = this.initialize.bind(this)(elementType);
+    this.initialize.bind(this)(elementType);
     if (parent){
       this.appendTo(parent,false);
     }
@@ -27,12 +27,12 @@ class Bristle {
       if (value.length <= 0) {
         throw this.error('Element Type too short!');
       }
-      return document.createElement(value);
+      this.element = document.createElement(value);
     } else if (typeof value === 'object') {
       if (!value.hasOwnProperty('type') || typeof value.type !=='string' || value.type.length <= 0) {
         throw this.error('Element Object missing/invalid type key');
       }
-      var element = document.createElement(value.type);
+      this.element = document.createElement(value.type);
       var options = Object.assign({},value);
       delete options.type;
       this.setAttributes(options);
