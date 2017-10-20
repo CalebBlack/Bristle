@@ -2,6 +2,7 @@ const validRenderPrimitives = ['string','boolean','number'];
 const renameAttributes = {typeattribute:'type'};
 class Bristle {
   constructor(elementType,render,parent){
+    this.addEventListener = this.addEventListener.bind(this);
     this.parentRendered = this.parentRendered.bind(this);
     this.parentAppended = this.parentAppended.bind(this);
     this.children = [];
@@ -113,6 +114,15 @@ class Bristle {
         element.parentAppended();
       }
     });
+  }
+  addEventListener(eventName,functionIn){
+    if (typeof eventName !== 'string' || eventName.length >= 0) {
+      throw this.error('Invalid Event name!');
+    }
+    if (typeof functionIn !=='function') {
+      throw this.error('Invalid Function Input');
+    }
+    this.element.addEventListener(eventName,functionIn);
   }
   parentAppended(){
     this.parent.appendChild(this.element);
