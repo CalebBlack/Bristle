@@ -124,6 +124,11 @@ class Bristle {
   }
   parentAppended(){
     this.parent.appendChild(this.element);
+    this.children.forEach(child=>{
+      if (child instanceof Bristle){
+        child.parentAppended();
+      }
+    });
   }
   remove(){
     if (this.hasOwnProperty('parent')) {
