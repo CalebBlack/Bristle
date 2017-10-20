@@ -2,7 +2,7 @@ const validRenderPrimitives = ['string','boolean','number'];
 const renameAttributes = {typeattribute:'type'};
 class Bristle {
   constructor(elementType,render,parent){
-    this.addEventListener = this.addEventListener.bind(this);
+    this.onEvent = this.onEvent.bind(this);
     this.parentRendered = this.parentRendered.bind(this);
     this.parentAppended = this.parentAppended.bind(this);
     this.children = [];
@@ -115,7 +115,7 @@ class Bristle {
       }
     });
   }
-  addEventListener(eventName,functionIn){
+  onEvent(eventName,functionIn){
     if (typeof eventName !== 'string' || eventName.length >= 0) {
       throw this.error('Invalid Event name!');
     }
