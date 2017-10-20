@@ -41,7 +41,9 @@ class Bristle {
       this.element = document.createElement(value.type);
       var options = Object.assign({},value);
       if (options.hasOwnProperty('class')){
-        this.addClass(options.class);
+        options.class.split(' ').forEach(class=>{
+          this.addClass(class);
+        })
       }
       delete options.class;
       delete options.type;
@@ -56,7 +58,10 @@ class Bristle {
     if (typeof string !== 'string' || string.length <= 0) {
       throw this.error('Invalid Class Name!');
     }
-    this.element.classList.add(string);
+    if (!this.classes.includes(string)) {
+      this.classes.push(string);
+      this.render();
+    }
   }
   setAttributes(options){
     Object.entries(options).forEach(optionPair=>{
@@ -103,6 +108,9 @@ class Bristle {
         this.element.appendChild(child);
       }
     });
+    if (this.classes.length > 0) {
+      this.element.className = this.classes.join(' ');
+    }
   }
   appendTo(element,rerender=true){
     if (element instanceof HTMLElement) {
