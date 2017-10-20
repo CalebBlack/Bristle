@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/CalebBlack/Bristle.git"
+    "url": "git+https://github.com/CalebBlack/BristleJS.git"
   },
   "keywords": [
     "bristle",
@@ -19,7 +19,7 @@
   "author": "CalebBlack",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/CalebBlack/Bristle/issues"
+    "url": "https://github.com/CalebBlack/BristleJS/issues"
   },
-  "homepage": "https://github.com/CalebBlack/Bristle#readme"
+  "homepage": "https://github.com/CalebBlack/BristleJS#readme"
 }
