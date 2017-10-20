@@ -49,22 +49,42 @@ class Bristle {
     });
   }
   render(value){
-    if (Array.isArray(value) && value.every((element)=>{return element instanceof Bristle})) {
-      value.forEach(bristle=>{
-        this.element.appendChild(bristle.element);
-        bristle.parent = this.element;
+    if (Array.isArray(value)) {
+      var output = [];
+      value.forEach(element=>{
+        switch(element) {
+          case element instanceof HTMLElement:
+            this.element.appendChild(element.cloneNode(true));
+          case element instanceof Bristle:
+            this.element.appendChild(element.element);
+            element.parent = this.element;
+            this.addChild(element);
+          case validRenderPrimitives.includes(typeof element):
+            output.push(element);
+        }
       });
+      if (output.length > 0) {
+        this.element.innerHTML = output.join('');
+      }
     } else if (value instanceof Bristle){
       this.element.appendChild(value.element);
       value.parent = this.element;
+      this.addChild(value);
+    } else if (value instanceof HTMLElement){
+      this.element.appendChild(element.cloneNode(true));
     } else {
-      if (value !== null) {
+      if (value !== null && value !== undefined) {
         this.value = value;
       }
       if (this.hasOwnProperty('parent') && validRenderPrimitives.includes(typeof this.value)){
         this.element.innerHTML = this.value;
       }
     }
+    this.children.forEach(child=>{
+      if (child instanceof Bristle) {
+        child.parentRendered();
+      }
+    })
   }
   appendTo(element,rerender=true){
     if (element instanceof HTMLElement) {
