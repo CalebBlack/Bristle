@@ -49,8 +49,13 @@ class Bristle {
     });
   }
   render(value){
-    if (value instanceof Bristle){
-      this.element.appendChild(value);
+    if (Array.isArray(value) && value.every((element)=>{return element instanceof Bristle})) {
+      value.forEach(bristle=>{
+        this.element.appendChild(bristle.element);
+        bristle.parent = this.element;
+      });
+    } else if (value instanceof Bristle){
+      this.element.appendChild(value.element);
       value.parent = this.element;
     } else {
       if (value !== null) {
