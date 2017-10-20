@@ -15,7 +15,7 @@ class Bristle {
       this.appendTo(parent,false);
     }
     this.type = elementType;
-    if (validRenderPrimitives.includes(typeof render) || render instanceof Bristle || render === null || render === undefined) {
+    if (validRenderPrimitives.includes(typeof render) || render instanceof HTMLElement || render instanceof Bristle || render === null || render === undefined) {
       this.render(render);
     } else if (typeof render === 'function') {
       render.bind(this)(this.render);
