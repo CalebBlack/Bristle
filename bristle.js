@@ -1,25 +1,17 @@
 class Bristle {
   constructor(elementType,render){
+    this.render = this.render.bind(this);
     if (typeof elementType !=='string' || elementType.length <= 0){
       throw this.error('Invalid Element Type!');
     }
-    console.log(render);
-    if (typeof render === 'string' || typeof render === 'number' || typeof render === 'boolean') {
+    this.type = elementType;
+    if (typeof render === 'string' || typeof render === 'number' || typeof render === 'boolean' || render instanceof Bristle || typeof render === 'null' || typeof render === 'undefined') {
       this.render(render);
     } else if (typeof render === 'function') {
-      this.renderMethod = render;
-      this.renderMethod.bind(this);
-      this.value = null;
-    } else if (typeof render === 'null' || typeof render === 'undefined'){
-      this.value = undefined;
-    } else if (render instanceof Bristle){
-      this.render(render);
-      this.value = null;
+      render.bind(this)(this.render);
     } else {
-      throw this.error('Invalid Render Type');
+      throw this.error('Invalid Render Value.');
     }
-    this.type = elementType;
-    this.render = this.render.bind(this);
   }
   render(value){
     if (value){
