@@ -50,6 +50,9 @@ class Bristle {
       }
     });
   }
+  parentRendered(){
+    this.render();
+  }
   render(value){
     if (Array.isArray(value)) {
       var output = [];
