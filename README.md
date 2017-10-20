@@ -7,24 +7,28 @@ Bristles represent DOM elements, and can chained together. Bristles are re-rende
 ## Bristle Methods
 
 #### render
-Allows you to set the value of a bristle, accepts string, boolean, number. Additionally a bristle or DOM element can be passed, which will just append it as a child. 
+Allows you to set the value of a bristle, accepts string, boolean, number. Additionally a bristle or DOM element can be passed, which will just append it as a child.
+
 ```bristle.render('Hello World')```
 
 #### appendTo
 Allows you to append a bristle to another Bristle or HTMLElement object
+
 ```bristle.appendTo(element)```
 
 #### onEvent
 Allows you to add event listeners to the bristle's DOM element.
+
 ```bristle.onEvent('click',()=>{alert('clicked!')})```
 
 #### setAttributes
 Allows you to modify the attributes of the bristle's DOM element, accepts an object.
+
 ```bristle.setAttributes({style:"color:red;"})```
 
 ## Example Calculator
 ```
-var calc = new Bristle({type:'div',id:'calculator'},'test');
+var calc = new Bristle({type:'div',id:'calculator'},'Calculator');
 var currentValue = 0;
 var display = new Bristle('p',currentValue,calc);
 var subtract = new Bristle('button','-',calc);
