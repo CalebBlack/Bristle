@@ -9,7 +9,7 @@ class Bristle {
     if (typeof elementType !== 'string' && typeof elementType !=='object'){
       throw this.error('Invalid Element Type!');
     }
-    this.element = this.initialize(elementType);
+    this.element = this.initialize.bind(this)(elementType);
     if (parent){
       this.appendTo(parent,false);
     }
