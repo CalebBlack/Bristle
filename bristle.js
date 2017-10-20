@@ -44,7 +44,6 @@ class Bristle {
   }
 
   parentRendered(){
-    console.log('parent rerendered');
     this.render();
   }
   setAttributes(options){
@@ -85,14 +84,11 @@ class Bristle {
         this.value = value;
       }
       if (this.hasOwnProperty('parent') && validRenderPrimitives.includes(typeof this.value)){
-        console.log('setting',this.value);
-        console.log('inner',this.element.textContent);
         this.element.textContent = this.value;
       }
     }
     this.children.forEach(child=>{
       if (child instanceof Bristle) {
-        console.log('found child',{child});
         child.parentRendered();
       }
     });
@@ -107,8 +103,6 @@ class Bristle {
       }
     } else {
       throw this.error('Invalid Parent to Append To!');
-    }
-    console.log('appending',this.parent,this.element);
     this.parent.appendChild(this.element);
     if (rerender === true) {
       this.render();
@@ -120,7 +114,6 @@ class Bristle {
     })
   }
   parentAppended(){
-    console.log('parent appended');
     this.parent.appendChild(this.element);
   }
   remove(){
