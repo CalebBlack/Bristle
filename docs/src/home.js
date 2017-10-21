@@ -1,5 +1,4 @@
 import Bristle from 'bristlejs';
-import request from './functions/request';
 import arrayToList from './functions/arraytolist';
 import './css/home.css';
 
