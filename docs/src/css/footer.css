@@ -1,0 +1,17 @@
+footer {
+  font-family: 'PT Serif', serif;
+  opacity: 0.5;
+  background: linear-gradient(to right, transparent, rgba(0, 0, 0, 0.22), transparent);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  line-height: 50px;
+  text-align: center;
+  font-size: 1.5em;
+  transition: opacity 0.2s ease;
+}
+footer:hover {
+  transition: opacity 0.4s ease;
+  opacity: 1;
+}
