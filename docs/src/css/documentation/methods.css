@@ -1,5 +1,9 @@
+.methods {
+  text-align: center;
+}
 .method > * {
   display: block;
+  margin: auto;
 }
 .method .code {
   width: fit-content;
