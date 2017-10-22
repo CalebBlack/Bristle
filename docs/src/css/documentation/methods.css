@@ -1,0 +1,6 @@
+.method > * {
+  display: block;
+}
+.method .code {
+  background-color: grey;
+}

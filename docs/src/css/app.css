@@ -12,6 +12,7 @@ body {
   height: 100%;
   /*background-color: #cecece;*/
   background: linear-gradient(to top, #eaeaea, white);
+  overflow: scroll;
 }
 a {
   color: inherit;

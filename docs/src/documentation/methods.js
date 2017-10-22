@@ -1,4 +1,6 @@
 import Bristle from 'bristlejs';
+import '../css/documentation/methods.css';
+
 const standardMethods = {
   render:['Allows you to set the value of a bristle, accepts string, boolean, number. Additionally a DOM element can be passed, which will just append it as a child.',"bristle.render('Hello World')"],
   remove:["Removes the bristle from it's parent element.",'bristle.remove()'],
@@ -19,7 +21,7 @@ function standardMethod(name,description,example){
   let body = new Bristle({type:'div',class:'method'});
   new Bristle({type:'h3',class:'name'},name,body);
   new Bristle({type:'p',class:'description'},description,body);
-  new Bristle({type:'span',class:'example'},example,body);
+  new Bristle({type:'span',class:'code'},example,body);
   return body;
 }
 export default methods;
