@@ -2,5 +2,8 @@
   display: block;
 }
 .method .code {
-  background-color: grey;
+  width: fit-content;
+  padding: 2px 8px;
+  border-radius: 3px;
+  background-color: #cccbcb;
 }
