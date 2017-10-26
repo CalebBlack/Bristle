@@ -1,6 +1,6 @@
 {
   "name": "bristlejs",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "Bristle is a lightweight front-end rendering solution.",
   "main": "bristle.js",
   "scripts": {
