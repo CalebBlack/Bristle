@@ -1,9 +1,9 @@
 import Bristle from 'bristlejs';
 function arrayToList(array){
-  var ul = new Bristle('ul');
+  var ul = Bristle('ul');
   array.forEach(value=>{
-    let li = new Bristle('li',null,ul);
-    new Bristle('p',value,li);
+    let li = Bristle('li',null,ul);
+    Bristle('p',value,li);
   });
   return ul;
 }

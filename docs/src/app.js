@@ -4,7 +4,7 @@ import content from './content';
 import footer from './footer';
 import './css/app.css';
 
-const App = new Bristle({type:'div',id:'app'});
+const App = Bristle({type:'div',id:'app'});
 header.appendTo(App);
 content.appendTo(App);
 footer.appendTo(App);
