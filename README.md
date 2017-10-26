@@ -35,7 +35,7 @@ WARNING: You will be vulnerable to script injections if you setAttributes with d
 
 ## Example Calculator
 ```
-var calc = new Bristle({type:'div',id:'calculator'},'Calculator');
+var calc = Bristle({type:'div',id:'calculator'},'Calculator');
 var currentValue = 0;
 var display = new Bristle('p',currentValue,calc);
 var subtract = new Bristle('button','-',calc);
