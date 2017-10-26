@@ -162,4 +162,7 @@ class Bristle {
     return new Error('BRISTLE ERROR: ' + message);
   }
 }
-module.exports = Bristle;
+function createBristle(...args){
+  return new Bristle(args[0],args[1],args[2]);
+}
+module.exports = createBristle;
