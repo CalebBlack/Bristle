@@ -4,6 +4,6 @@ import './css/header.css';
 
 var header = Bristle('header');
 
-Bristle({type:'a',href:'/BristleJS/'},'BristleJS',new Bristle('h1',null,header));
+Bristle({type:'a',href:'/BristleJS/'},'BristleJS',Bristle('h1',null,header));
 Nav.appendTo(header);
 export default header;
